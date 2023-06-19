@@ -1,5 +1,16 @@
 import csv
 
+with open('data.csv') as csv_file:
+    csv_reader = csv.DictReader(csv_file)
+    for row in csv_reader:
+        file_name = row['filename'].split('/')[-1]
+        print(file_name)
+
+
+
+
+import csv
+
 with open('data.csv') as csv_file, open('output.txt', 'w') as output_file:
     csv_reader = csv.DictReader(csv_file)
     for row in csv_reader:
