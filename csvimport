@@ -1,5 +1,15 @@
 import csv
 
+with open('data.csv') as csv_file, open('output.txt', 'w') as output_file:
+    csv_reader = csv.DictReader(csv_file)
+    for row in csv_reader:
+        output_file.write(row['Name'] + '\\\\n')
+
+
+
+
+import csv
+
 with open('data.csv') as csv_file, open('output.csv', 'w', newline='') as output_file:
     csv_reader = csv.DictReader(csv_file)
     fieldnames = csv_reader.fieldnames + ['sourcetype_host']
