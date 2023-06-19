@@ -1,3 +1,20 @@
+import csv
+
+with open('data.csv') as csv_file, open('output.csv', 'w', newline='') as output_file:
+    csv_reader = csv.DictReader(csv_file)
+    fieldnames = csv_reader.fieldnames + ['sourcetype_host']
+    csv_writer = csv.DictWriter(output_file, fieldnames=fieldnames)
+    csv_writer.writeheader()
+    for row in csv_reader:
+        row['sourcetype_host'] = row['sourcetype'] + '_' + row['host']
+        row['sourcetype_host'] = row['sourcetype_host'].replace(':', '')
+
+        csv_writer.writerow(row)
+
+
+
+
+
 
 import csv
 
