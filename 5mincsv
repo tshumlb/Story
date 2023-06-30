@@ -22,4 +22,4 @@ done
 
 {timestamp_variable}=$(date +%s.%3N)
 
-
+echo "$new_records" >> "$output_dir/$(date +%Y-%m-%d).csv"
