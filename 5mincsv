@@ -1,0 +1,23 @@
+every 5 min csv
+
+#!/bin/bash
+
+timestamp_file="/path/to/timestamp.txt"
+
+if [ -f "$timestamp_file" ]
+then
+    last_timestamp=$(cat "$timestamp_file")
+else
+    last_timestamp=$(date +%s)
+fi
+
+while true
+do
+    new_records=$(mysql -u {username} -p{password} -e "SELECT * FROM {table_name} WHERE timestamp > ${last_timestamp}")
+    echo "$new_records"
+    last_timestamp=$(date +%s)
+    echo "$last_timestamp" > "$timestamp_file"
+    sleep 300
+done
+
+
