@@ -20,4 +20,6 @@ do
     sleep 300
 done
 
+{timestamp_variable}=$(date +%s.%3N)
+
 
